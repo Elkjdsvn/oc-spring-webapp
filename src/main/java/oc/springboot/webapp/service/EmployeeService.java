@@ -15,7 +15,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeProxy employeeProxy;
 
-    public Employee getEmployee(final int id) {
+    public Employee getEmployee(final long id) {
         return employeeProxy.getEmployee(id);
     }
 
@@ -23,9 +23,8 @@ public class EmployeeService {
         return employeeProxy.getEmployees();
     }
 
-    public void deleteEmployee(final int id) {
+    public void deleteEmployee(final long id) {
         employeeProxy.deleteEmployee(id);
-        ;
     }
 
     public Employee saveEmployee(Employee employee) {

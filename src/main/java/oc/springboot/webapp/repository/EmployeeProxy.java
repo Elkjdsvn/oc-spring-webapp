@@ -36,6 +36,20 @@ public class EmployeeProxy {
         return response.getBody();
     }
 
+    /**
+     * <pre>
+     * Uses a ParameterizedTypeReference because the response is a collection
+     * 
+     * The empty {} creates an anonymous subclass of ParameterizedTypeReference that
+     * captures the complete generic type information through its superclass.
+     * 
+     * You only need to use ParameterizedTypeReference when working with collections
+     * or other generic types (like Map<String, Employee>).
+     * 
+     * For single objects, you can use the simpler methods like getForObject(url,
+     * Employee.class).
+     * </pre>
+     */
     public Iterable<Employee> getEmployees() {
         String baseApiURL = props.getApiURL();
         String getEmployeesURL = baseApiURL + "/employees";
@@ -87,7 +101,7 @@ public class EmployeeProxy {
         return response.getBody();
     }
 
-    public void deleteEmployee(int id) {
+    public void deleteEmployee(final long id) {
         String baseApiUrl = props.getApiURL();
         String deleteEmployeeUrl = baseApiUrl + "/employee/" + id;
 
